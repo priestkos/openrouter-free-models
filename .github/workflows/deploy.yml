@@ -3,10 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  # On-demand only — no scheduled runs. Trigger from the Actions tab
+  # ("Run workflow") or via: gh workflow run "Deploy to GitHub Pages"
   workflow_dispatch:
-  schedule:
-    # Refresh the model list daily at 06:00 UTC
-    - cron: "0 6 * * *"
 
 permissions:
   contents: read

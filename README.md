@@ -16,7 +16,7 @@ A small static site that lists every **free** (zero-cost) model available on Ope
 | `scripts/fetch-models.mjs` | Pulls the catalog and keeps models priced `$0 in / $0 out`. No dependencies. |
 | `data/models.json` | Generated snapshot the page loads. Regenerated at build time. |
 | `index.html`, `assets/` | The site (vanilla HTML/CSS/JS, no build step). |
-| `.github/workflows/deploy.yml` | Builds the data, assembles `_site/`, publishes to GitHub Pages. Also runs daily. |
+| `.github/workflows/deploy.yml` | Builds the data, assembles `_site/`, publishes to GitHub Pages. Runs on push and on demand (no schedule). |
 
 ## Local preview
 
