@@ -3,8 +3,11 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-  # On-demand only — no scheduled runs. Trigger from the Actions tab
-  # ("Run workflow") or via: gh workflow run "Deploy to GitHub Pages"
+  # Daily refresh, run entirely on GitHub-hosted runners (no local scheduler).
+  schedule:
+    - cron: "0 6 * * *"
+  # On-demand trigger: Actions tab -> "Run workflow", or
+  # gh workflow run "Deploy to GitHub Pages"
   workflow_dispatch:
 
 permissions:
