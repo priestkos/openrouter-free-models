@@ -14,13 +14,15 @@ A small static site that lists every **free** (zero-cost) model available on Ope
 | Piece | Role |
 | --- | --- |
 | `scripts/fetch-models.mjs` | Pulls the catalog and keeps models priced `$0 in / $0 out`. No dependencies. |
-| `data/models.json` | Generated snapshot the page loads. Regenerated at build time. |
+| `data/models.json` | Generated snapshot the page loads. Regenerated at build time and committed back to `main` by the daily run. |
 | `index.html`, `assets/` | The site (vanilla HTML/CSS/JS, no build step). |
 | `.github/workflows/deploy.yml` | Builds the data, assembles `_site/`, publishes to GitHub Pages. Runs on push, daily at 06:00 UTC, and on demand. |
 
 **Auto-updates run on GitHub Actions only** — nothing is scheduled on any local machine. The daily
 `schedule:` trigger executes on GitHub's runners; trigger a manual refresh from the repo's Actions
-tab (*Run workflow*) or with `gh workflow run "Deploy to GitHub Pages"`.
+tab (*Run workflow*) or with `gh workflow run "Deploy to GitHub Pages"`. Each run also commits the
+refreshed `data/models.json` back to `main` (as `github-actions[bot]`), which keeps the git snapshot
+current and keeps the schedule from being auto-disabled after 60 days of inactivity.
 
 ## Local preview
 
